@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title><?php echo $title; ?></title>
+  <title><?= $title; ?></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
   <style>
     p {
@@ -25,23 +25,29 @@
 
   <nav>
     <div class="nav-wrapper container">
-      <a href="#" class="brand-logo right">Films</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="components.html">Components</a></li>
-        <li><a href="javascript.html">JavaScript</a></li>
+      <a id="logo-container" href="#" class="brand-logo">Films</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li><a href="#">Link 4</a></li>
       </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
   </nav>
 
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <h1 class="header"><?php echo $title; ?></h1>
+        <h1 class="header"><?= $title; ?></h1>
         <ul class="collection">
           <?php foreach ( $films as $film ) : ?>
           <li class="collection-item avatar">
-            <i class="mdi-av-videocam circle red"></i>
+            <i class="mdi-av-videocam circle"></i>
             <span class="title"><?php echo $film['title']; ?></span>
             <p><?php echo $film['rating']; ?> <br>
               <?php echo $film['special_features']; ?>
@@ -74,14 +80,18 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      © 2014 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2014 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
       </div>
     </div>
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+  <script>
+    // Initialize collapse button
+    $(".button-collapse").sideNav();
+  </script>
 
 </body>
 </html>
