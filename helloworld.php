@@ -3,16 +3,11 @@
  * Lógica de programación
  */
 
-  /**
-   * Errores en php
-   * Fatales.- Terminan la ejecución de la aplicación
-   * Warnings.- Cuando un tratas de incluir algo que no existe, etc
-   * Notice.- Error no tan importante, como cuando usas una variable no definida
-   */
+  // Traemos los settings
+  require_once('config.php');
 
-  // Mostrar errores, estamos en desarrollo
-  ini_set('display_errors', 'on'); // En el php.ini se establecen los settings, modificable en tiempo real
-  error_reporting(E_ALL); // Php... quiero ver todos los errores
+  // Traemos los helpers
+  require_once('helpers.php');
 
   // Variables de la conexión a la base de datos
   $dsn = 'mysql:host=localhost;dbname=sakila';
@@ -53,13 +48,9 @@
     die();
   }
 
-  /**
-   * Encapsular algo que solo está disponible en el scope o espacio que nosotros le digamos.
-   * Por ejemplo una contraseña o información sencible que no queremos tener en nuestra vista.
-   * Podemos encapsular código en PHP dentro del contexto de una función:
-   * Como argumentos solo le pasaremos las variables que la vista necesita y nada más.
-   */
-  function view($films, $title) {
-    include 'view.php';
-  }
-  view($films, $title);
+  $vars = array(
+    'films' => $films,
+    'title' => $title
+  );
+
+  view('view', $vars);
