@@ -16,5 +16,5 @@
      * exctract() nos permite convertir las llaves de un array asociativo a variables individuales
      */
     extract($vars);
-    include "$template.php";
+    include "views/$template.tpl.php";
   }

@@ -52,7 +52,7 @@
             <p><?php echo $film['rating']; ?> <br>
               <?php echo $film['special_features']; ?>
             </p>
-            <a href="films/?<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
+            <a href="films.php?id=<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
           </li>
           <?php endforeach; ?>
         </ul>
