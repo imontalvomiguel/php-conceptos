@@ -8,6 +8,8 @@
 
   // Para realizar consultar con el objeto PDO, tambíen manejaremos las Exceptions
   try {
+    // Acceso a la variable $db en el scope global
+    global $db;
     // Hacemos nuestra consulta... Nos regresa un objeto tipo PDOStatement
     $results = $db->query('SELECT * FROM film');
 

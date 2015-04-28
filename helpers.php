@@ -18,3 +18,17 @@
     extract($vars);
     include "views/$template.tpl.php";
   }
+
+  // LLAMAR A LOS CONTROLADORES INDIVIDUALES
+  function controller($name) {
+    $file = "controllers/$name.php";
+
+    if (file_exists($file)){ // Si el controlador existe
+      require $file;
+    } else {
+      // Mandamos a la cabecera del navegador diciendo que hubo un error 404
+      header("HTTP/1.0 404 Not Found");
+      // Mensaje al usuario de 404 o vista
+      exit('Página no encontrada');
+    }
+  }

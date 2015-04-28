@@ -8,6 +8,7 @@
 
     // Para realizar consultar con el objeto PDO, tambíen manejaremos las Exceptions
     try {
+      global $db;
       // Prepara la sonsulta SQL para ser ejecucata, utilizamos un placeholder ?
       $results = $db->prepare('SELECT * FROM film WHERE film_id = ?');
 
