@@ -25,7 +25,7 @@
 
   <nav>
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Films</a>
+      <a id="logo-container" href="index.php" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
@@ -52,7 +52,7 @@
             <p><?php echo $film['rating']; ?> <br>
               <?php echo $film['special_features']; ?>
             </p>
-            <a href="films.php?id=<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
+            <a href="index.php?url=films&id=<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
           </li>
           <?php endforeach; ?>
         </ul>

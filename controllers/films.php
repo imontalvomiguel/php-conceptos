@@ -1,7 +1,4 @@
 <?php
-  require_once('config.php');
-  require_once('helpers.php');
-  require_once('database.php');
 
   if (!empty($_GET['id'])) {
     $film_id = intval($_GET['id']);
@@ -33,5 +30,6 @@
 
     view('films', compact('film', 'title'));
   } else {
-    exit('Nothing found');
+    header("HTTP/1.0 404 Not Found");
+    exit('Página no encontrada');
   }

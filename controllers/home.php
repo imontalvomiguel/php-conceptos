@@ -3,15 +3,6 @@
  * Lógica de programación
  */
 
-  // Traemos los settings
-  require_once('config.php');
-
-  // Traemos los helpers
-  require_once('helpers.php');
-
-  // Traemos la instancia de PDO para conexión a base de datos
-  require_once('database.php');
-
   // Título de la página
   $title = 'Films';
 

@@ -25,7 +25,7 @@
 
   <nav>
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Films</a>
+      <a id="logo-container" href="index.php" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
