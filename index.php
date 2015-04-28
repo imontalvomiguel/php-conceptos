@@ -12,8 +12,4 @@
   require_once('helpers.php'); // Helpers
   require_once('database.php'); // PDO para conexión a la base de datos
 
-  if (empty($_GET['url'])) {
-    $_GET['url'] = 'home';
-  }
-
   controller($_GET['url']);

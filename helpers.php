@@ -21,6 +21,11 @@
 
   // LLAMAR A LOS CONTROLADORES INDIVIDUALES
   function controller($name) {
+    if (empty($name)) {
+      // Si está vacío el $name, le asignaremos un valor por defecto
+      $name = 'home';
+    }
+
     $file = "controllers/$name.php";
 
     if (file_exists($file)){ // Si el controlador existe
