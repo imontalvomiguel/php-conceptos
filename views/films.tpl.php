@@ -25,16 +25,17 @@
 
   <nav>
     <div class="nav-wrapper container">
-      <a id="logo-container" href="index.php" class="brand-logo">Films</a>
+      <a id="logo-container" href="./" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li><a href="#">Link 4</a></li>
+        <li><a href="#"><i class="mdi-action-view-list"></i></a></li>
+        <li><a href="#"><i class="mdi-action-search"></i></a></li>
+        <li><a href="#"><i class="mdi-communication-quick-contacts-mail"></i></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="#">View list</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
@@ -57,23 +58,22 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Footer Content</h5>
-          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          <h5 class="white-text">Films</h5>
+          <p class="grey-text text-lighten-4">The most popular films.</p>
         </div>
         <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
+          <h5 class="white-text">Quick links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">View list</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Search</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-        © 2014 Copyright Text
+        © <?= date('Y'); ?> Copyright Text
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
       </div>
     </div>
