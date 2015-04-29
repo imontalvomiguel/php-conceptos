@@ -31,9 +31,8 @@
     if (file_exists($file)){ // Si el controlador existe
       require $file;
     } else {
-      // Mandamos a la cabecera del navegador diciendo que hubo un error 404
-      header("HTTP/1.0 404 Not Found");
-      // Mensaje al usuario de 404 o vista
-      exit('Página no encontrada');
+      // Redirección a controlador 404
+      header('Location: ./404');
+      exit();
     }
   }
