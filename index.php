@@ -10,6 +10,6 @@
 
   require_once('config.php'); // Settings de la aplicación
   require_once('helpers.php'); // Helpers
-  require_once('database.php'); // PDO para conexión a la base de datos
+  require_once('models/database.php'); // PDO para conexión a la base de datos
 
   controller($_GET['url']);

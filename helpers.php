@@ -19,7 +19,7 @@
     include "views/$template.tpl.php";
   }
 
-  // LLAMAR A LOS CONTROLADORES INDIVIDUALES
+  // Llamar a los controladores individuales
   function controller($name) {
     if (empty($name)) {
       // Si está vacío el $name, le asignaremos un valor por defecto
@@ -32,7 +32,60 @@
       require $file;
     } else {
       // Redirección a controlador 404
-      header('Location: ./404');
-      exit();
+      redirect('Location: ./404');
     }
+  }
+
+  // Función para redireccionar
+  function redirect($location) {
+    // Redirección a controlador 404
+    header($location);
+    exit();
+  }
+
+  // Realizar la consulta para traer todas las films
+  function get_films_all() {
+    // Para realizar consultar con el objeto PDO, es bueno que lo hagamos manejando Excepciones
+    try {
+      // Acceso a la variable $db en el scope global
+      global $db;
+      // Hacemos nuestra consulta... Nos regresa un objeto tipo PDOStatement
+      $results = $db->query('SELECT * FROM film');
+    } catch(Exception $e) {
+      // Si algo falla entonces mandamos el mensaje y muere la aplicación
+      echo $e->getMessage();
+      die();
+    }
+    /**
+      * El objeto tiene el método fetchAll para retornar un arreglo con los resultados,
+      * el argumento PDO::FETH_ASSOC le indica que quiero un array asociativo.
+     */
+    $films = $results->fetchall(PDO::FETCH_ASSOC);
+    return $films;
+  }
+
+  // Realizar consulta para traer un film por individual
+  function get_film_single($film_id) {
+    try {
+      global $db;
+      // Prepara la sonsulta SQL para ser ejecucata, utilizamos un placeholder ?
+      $results = $db->prepare('SELECT * FROM film WHERE film_id = ?');
+
+      // Asignamos los parámetros de la constulta con el método bindParam
+      $results->bindParam(1, $film_id);
+
+      // Ejecutar la consulta
+     $results->execute();
+
+    } catch(Exception $e) {
+      echo $e->getMessage();
+      die();
+    }
+
+    /**
+      * El objeto tiene el método fetchAll para retornar un arreglo con los resultados,
+      * el argumento le indica que quiero un array asociativo.
+     */
+    $film = $results->fetch(PDO::FETCH_ASSOC);
+    return $film;
   }
