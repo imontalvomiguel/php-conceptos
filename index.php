@@ -12,4 +12,15 @@
   require_once('helpers.php'); // Helpers
   require_once('models/database.php'); // PDO para conexión a la base de datos
 
-  controller($_GET['url']);
+  // Library
+  require 'library/Request.php';
+  require 'library/Inflector.php';
+
+  if (empty($_GET['url'])) {
+    $url = '';
+  } else {
+    $url = $_GET['url'];
+  }
+
+  $request = new Request($url);
+  var_dump($request->getControllerFileName());
