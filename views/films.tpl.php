@@ -48,6 +48,7 @@
         <p><?= $film['description']; ?></p>
         <p><strong>Release year:</strong> <?= $film['release_year']; ?></p>
         <p><strong>Rating:</strong> <?= $film['rating']; ?></p>
+        <p><strong>Rating Rate:</strong> <?= $film['rental_rate']; ?></p>
         <p><strong>Special features: </strong><?= $film['special_features']; ?></p>
         <p><strong>Length: </strong><?= $film['length']; ?></p>
       </div>

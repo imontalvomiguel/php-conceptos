@@ -64,6 +64,19 @@
     return $films;
   }
 
+  // Realizar la consulta de las películas con mejor rating
+  function get_films_rated() {
+    try {
+      global $db;
+      $results = $db->query("SELECT * FROM film ORDER BY rental_rate DESC LIMIT 10");
+    } catch (Exception $e) {
+      echo $e->getMessage;
+      die();
+    }
+    $films = $results->fetchall(PDO::FETCH_ASSOC);
+    return $films;
+  }
+
   // Realizar consulta para traer un film por individual
   function get_film_single($film_id) {
     try {

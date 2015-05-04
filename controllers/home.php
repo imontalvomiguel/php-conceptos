@@ -4,8 +4,8 @@
  */
 
   // Título de la página
-  $title = 'Films';
-  $films = get_films_all();
+  $title = 'Rental Rate';
+  $films = get_films_rated();
 
   $vars = array(
     'films' => $films,
