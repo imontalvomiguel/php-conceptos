@@ -28,13 +28,13 @@
       <a id="logo-container" href="./" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="view-list"><i class="mdi-action-view-list"></i></a></li>
-        <li><a href="#"><i class="mdi-action-search"></i></a></li>
+        <li><a href="search"><i class="mdi-action-search"></i></a></li>
         <li><a href="#"><i class="mdi-communication-quick-contacts-mail"></i></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="view-list">View list</a></li>
-        <li><a href="#">Search</a></li>
+        <li><a href="search">Search</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -72,7 +72,7 @@
           <h5 class="white-text">Quick links</h5>
           <ul>
             <li><a class="grey-text text-lighten-3" href="view-list">View list</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Search</a></li>
+            <li><a class="grey-text text-lighten-3" href="search">Search</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
           </ul>
         </div>

@@ -118,6 +118,20 @@
     return $films;
   }
 
+  // Realiza la consulta dada una palabra clave
+  function get_films_search($s) {
+    try {
+      global $db;
+      $results = $db->prepare("SELECT * FROM film WHERE title LIKE ?");
+      $results->bindValue(1,"%" . $s . "%");
+      $results->execute();
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+    $films = $results->fetchall(PDO::FETCH_ASSOC);
+    return $films;
+  }
+
   // Realiza la consulta para saber cuantas filas de la tabla film tenemos
   function get_films_total() {
     try {

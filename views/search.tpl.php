@@ -36,9 +36,21 @@
   </nav>
 
   <div class="container">
+    <h1 class="header"><?= $title; ?></h1>
     <div class="row">
+        <div class="col s12 nav-wrapper">
+        <form>
+          <div class="input-field">
+            <i class="mdi-action-search prefix"></i>
+            <input id="icon_prefix" type="text" class="validate" name="s">
+            <label for="icon_prefix"><?php echo (isset($s) ? $s : 'Keyword'); ?></label>
+          </div>
+        </form>
+        </div>
+    </div>
+    <div class="row">
+      <?php if (isset($films)) : if (!empty($films)) :?>
       <div class="col s12">
-        <h1 class="header"><?= $title; ?></h1>
         <ul class="collection">
           <?php foreach ( $films as $film ) : ?>
           <li class="collection-item avatar">
@@ -51,18 +63,10 @@
           </li>
           <?php endforeach; ?>
         </ul> <!-- Films list -->
-        <ul id="pagination" class="pagination">
-          <li class="waves-effect <?php echo ($pagesLimit <= $limit ? 'disabled' : ''); ?>">
-            <a href="<?php echo ( $pagesStart > $limit  ? '?p=' . ($pagesStart - 1) : '' ); ?>"><i class="mdi-navigation-chevron-left"></i></a>
-          </li>
-          <?php for ($i = $pagesStart; $i <= $pagesLimit; $i++) : ?>
-          <li class="waves-effect <?php echo ($p == $i ? 'active' : ''); ?>"><a href="?p=<?php echo $i; ?>"><?= $i; ?></a></li>
-          <?php endfor; ?>
-          <li class="waves-effect <?php echo ($pagesLimit >= $pagesTotal ? 'disabled' : ''); ?>">
-            <a href="<?php echo ($pagesLimit < $pagesTotal ? '?p=' . ($pagesLimit + 1): ''); ?>"><i class="mdi-navigation-chevron-right"></i></a>
-          </li>
-        </ul> <!-- Films pagination -->
       </div>
+      <?php else: ?>
+        <p>Nothing found...</p>
+      <?php endif; endif;?>
     </div>
   </div>
 
