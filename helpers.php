@@ -102,3 +102,30 @@
     $film = $results->fetch(PDO::FETCH_ASSOC);
     return $film;
   }
+
+  // Realizar la consulta para traer un rango de films
+  function get_films_subset($start, $limit) {
+    try {
+      global $db;
+      $results = $db->prepare('SELECT * FROM film ORDER BY film_id LIMIT :start, :limit');
+      $results->bindValue(':start', $start, PDO::PARAM_INT);
+      $results->bindValue(':limit', $limit, PDO::PARAM_INT);
+      $results->execute();
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+    $films = $results->fetchall(PDO::FETCH_ASSOC);
+    return $films;
+  }
+
+  // Realiza la consulta para saber cuantas filas de la tabla film tenemos
+  function get_films_total() {
+    try {
+      global $db;
+      $results = $db->query('SELECT COUNT(film_id) FROM film');
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+    $count = $results->fetchColumn();
+    return $count;
+  }

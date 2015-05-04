@@ -1,9 +1,3 @@
-<?php
-/**
- * Lógica de presentación
- */
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +50,18 @@
             <a href="index.php?url=films&id=<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
           </li>
           <?php endforeach; ?>
-        </ul>
+        </ul> <!-- Films list -->
+        <ul id="pagination" class="pagination">
+          <li class="waves-effect <?php echo ($pagesLimit <= $limit ? 'disabled' : ''); ?>">
+            <a href="<?php echo ( $pagesStart > $limit  ? '?p=' . ($pagesStart - 1) : '' ); ?>"><i class="mdi-navigation-chevron-left"></i></a>
+          </li>
+          <?php for ($i = $pagesStart; $i <= $pagesLimit; $i++) : ?>
+          <li class="waves-effect <?php echo ($p == $i ? 'active' : ''); ?>"><a href="?p=<?php echo $i; ?>"><?= $i; ?></a></li>
+          <?php endfor; ?>
+          <li class="waves-effect <?php echo ($pagesLimit >= $pagesTotal ? 'disabled' : ''); ?>">
+            <a href="<?php echo ($pagesLimit < $pagesTotal ? '?p=' . ($pagesLimit + 1): ''); ?>"><i class="mdi-navigation-chevron-right"></i></a>
+          </li>
+        </ul> <!-- Films pagination -->
       </div>
     </div>
   </div>
@@ -91,6 +96,11 @@
   <script>
     // Initialize collapse button
     $(".button-collapse").sideNav();
+
+    // Do nothing for disabled buttons (pag)
+    $('#pagination').on('click', '.disabled a', function(e) {
+      e.preventDefault();
+    });
   </script>
 
 </body>
