@@ -17,6 +17,9 @@ class Request {
   protected $url;
   protected $controller;
   protected $defaultController = 'home';
+  protected $action;
+  protected $defaultAction = 'index';
+  protected $params = array(); // Valor por defecto, sabemos que esperamos un arreglo aquí.
 
   // Método constructor que se llama automáticamente cada vez que se instancía la clase.
   // Métodos suelen ser public.
@@ -31,6 +34,8 @@ class Request {
     $segments = explode('/', $this->getUrl());
 
     $this->resolveController($segments);
+    $this->resolveAction($segments);
+    $this->resolveParams($segments);
   }
 
   /**
@@ -49,9 +54,22 @@ class Request {
 
   }
 
+  public function resolveAction(&$segments) {
+    $this->action = array_shift($segments);
+
+    if (empty($this->action)) {
+      $this->action = $this->defaultAction;
+    }
+
+  }
+
+  // Todo lo que resta de la url son parámetros ya no los pasamos por referencia si no por valor.
+  public function resolveParams($segments) {
+    $this->params = $segments;
+  }
+
   public function getUrl() {
     return $this->url;
-
   }
 
   public function getController() {
@@ -66,4 +84,38 @@ class Request {
   public function getControllerFileName() {
     return 'controllers/' . $this->getControllerClassName() . '.php';
   }
+
+  public function getAction() {
+    return $this->action;
+  }
+
+  public function getActionMethodName() {
+    return Inflector::lowerCamel($this->getAction()) . 'Action';
+  }
+
+  public function getParams() {
+    return $this->params;
+  }
+
+  public function execute() {
+    $controllerClassName = $this->getControllerClassName();
+    $controllerFileName = $this->getControllerFileName();
+    $actionMethodName = $this->getActionMethodName();
+    $params = $this->getParams();
+
+    // Esto se hace con manejo de excepciones try/catch
+    if (!file_exists($controllerFileName)) {
+      exit('controlador no existe');
+    }
+
+    // Require al FileName
+    require $controllerFileName;
+
+    // Instanciamos una clase dinámicamente con ayuda de los métodos que ya hemos creado.
+    $controller = new $controllerClassName();
+
+    // Ejecutamos el método del controlador con los parámetros que necesita
+    call_user_func_array([$controller, $actionMethodName], $params);
+  }
+
 }

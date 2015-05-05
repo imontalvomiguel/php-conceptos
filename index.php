@@ -23,4 +23,4 @@
   }
 
   $request = new Request($url);
-  var_dump($request->getControllerFileName());
+  $request->execute();
