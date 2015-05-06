@@ -115,7 +115,20 @@ class Request {
     $controller = new $controllerClassName();
 
     // Ejecutamos el método del controlador con los parámetros que necesita
-    call_user_func_array([$controller, $actionMethodName], $params);
+    // Recibimos la respuesta generada por el controlador.
+    $response = call_user_func_array([$controller, $actionMethodName], $params);
+
+    $this->executeResponse($response);
+  }
+
+  public function executeResponse($response) {
+    // Si es una clase hija de Response(algún tipo de respuesta),
+    // entonces ejecutamos su método execute()
+    if ($response instanceof Response) {
+      $response->execute();
+    } else {
+      exit('Respuesta no válida');
+    }
   }
 
 }

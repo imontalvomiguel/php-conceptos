@@ -4,18 +4,21 @@
  */
 
   class HomeController {
+
     public function indexAction() {
-      exit('Ya regresamos');
+      $title = 'Rental Rate';
+      $films = get_films_rated();
+
+      $vars = array(
+        'films' => $films,
+        'title' => $title
+      );
+
+      $view = new View('home', $vars);
+
+      return $view;
     }
   }
 
-  // Título de la página
-  //$title = 'Rental Rate';
-  //$films = get_films_rated();
 
-  //$vars = array(
-    //'films' => $films,
-    //'title' => $title
-  //);
 
-  //view('home', $vars);
