@@ -24,6 +24,7 @@ class View extends Response {
     return $this->template;
   }
 
+  // Implementamos el método abstracto execute (obligatorio)
   public function execute() {
     $vars = $this->getVars();
     $template = $this->getTemplate();
@@ -31,7 +32,15 @@ class View extends Response {
     // Le pasamos las variables que queremos que la función tenga acceso. (Encapsulamiento / Restringir acceso)
     call_user_func(function() use ($template, $vars) {
       extract($vars);
+      // Para toda la salida de texto enviada al cliente y almacenarlo en una variable.
+      ob_start();
       require "views/$template.tpl.php";
+
+      // Asignamos a una variable la salida del template
+      $tpl_content = ob_get_clean();
+
+      // Incluimos el layout común header,footer,sidebar,etc
+      require 'views/layout.tpl.php';
     });
   }
 

@@ -1,3 +1,9 @@
+<?php
+/**
+ * Lógica de presentación
+ */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +27,7 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="./" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="view-list"><i class="mdi-action-view-list"></i></a></li>
+        <li><a href="list"><i class="mdi-action-view-list"></i></a></li>
         <li><a href="search"><i class="mdi-action-search"></i></a></li>
         <li><a href="#"><i class="mdi-communication-quick-contacts-mail"></i></a></li>
       </ul>
@@ -35,36 +41,7 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h1 class="header"><?= $title; ?></h1>
-        <ul class="collection">
-          <?php foreach ( $films as $film ) : ?>
-          <li class="collection-item avatar">
-            <i class="mdi-av-videocam circle"></i>
-            <span class="title"><?php echo $film['title']; ?></span>
-            <p><strong>Rate: </strong><?php echo $film['rating']; ?> <br>
-              <strong>Rental Rate</strong>: <?php echo $film['rental_rate']; ?>
-            </p>
-            <a href="index.php?url=films&id=<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
-          </li>
-          <?php endforeach; ?>
-        </ul> <!-- Films list -->
-        <ul id="pagination" class="pagination">
-          <li class="waves-effect <?php echo ($pagesLimit <= $limit ? 'disabled' : ''); ?>">
-            <a href="<?php echo ( $pagesStart > $limit  ? '?p=' . ($pagesStart - 1) : '' ); ?>"><i class="mdi-navigation-chevron-left"></i></a>
-          </li>
-          <?php for ($i = $pagesStart; $i <= $pagesLimit; $i++) : ?>
-          <li class="waves-effect <?php echo ($p == $i ? 'active' : ''); ?>"><a href="?p=<?php echo $i; ?>"><?= $i; ?></a></li>
-          <?php endfor; ?>
-          <li class="waves-effect <?php echo ($pagesLimit >= $pagesTotal ? 'disabled' : ''); ?>">
-            <a href="<?php echo ($pagesLimit < $pagesTotal ? '?p=' . ($pagesLimit + 1): ''); ?>"><i class="mdi-navigation-chevron-right"></i></a>
-          </li>
-        </ul> <!-- Films pagination -->
-      </div>
-    </div>
-  </div>
+  <?= $tpl_content; ?>
 
   <footer class="page-footer">
     <div class="container">
@@ -96,11 +73,6 @@
   <script>
     // Initialize collapse button
     $(".button-collapse").sideNav();
-
-    // Do nothing for disabled buttons (pag)
-    $('#pagination').on('click', '.disabled a', function(e) {
-      e.preventDefault();
-    });
   </script>
 
 </body>

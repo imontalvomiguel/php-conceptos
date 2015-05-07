@@ -15,3 +15,6 @@
   define('DB_NAME', 'sakila');
   define('DB_USER', 'root');
   define('DB_PASS', 'root');
+
+  // Base url
+  define('BASE_URL', '/hello-php');
