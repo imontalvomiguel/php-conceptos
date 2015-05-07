@@ -25,17 +25,17 @@
 
   <nav>
     <div class="nav-wrapper container">
-      <a id="logo-container" href="./" class="brand-logo">Films</a>
+      <a id="logo-container" href="<?= BASE_URL; ?>" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="list"><i class="mdi-action-view-list"></i></a></li>
-        <li><a href="search"><i class="mdi-action-search"></i></a></li>
-        <li><a href="#"><i class="mdi-communication-quick-contacts-mail"></i></a></li>
+        <li><a href="<?= BASE_URL; ?>/list"><i class="mdi-action-view-list"></i></a></li>
+        <li><a href="<?= BASE_URL; ?>/search"><i class="mdi-action-search"></i></a></li>
+        <li><a href="mailto:me@montalvomiguel.net"><i class="mdi-communication-quick-contacts-mail"></i></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="view-list">View list</a></li>
-        <li><a href="search">Search</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="<?= BASE_URL; ?>/list">View list</a></li>
+        <li><a href="<?= BASE_URL; ?>/search">Search</a></li>
+        <li><a href="mailto:me@montalvomiguel.net">Contact</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
@@ -53,9 +53,9 @@
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Quick links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="view-list">View list</a></li>
-            <li><a class="grey-text text-lighten-3" href="search">Search</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/list">View list</a></li>
+            <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/search">Search</a></li>
+            <li><a class="grey-text text-lighten-3" href="mailto:me@montalvomiguel.net">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -63,7 +63,7 @@
     <div class="footer-copyright">
       <div class="container">
         © <?= date('Y'); ?> Copyright Text
-        <a class="grey-text text-lighten-4 right" href="./">Home</a>
+        <a class="grey-text text-lighten-4 right" href="<?= BASE_URL; ?>">Home</a>
       </div>
     </div>
   </footer>
@@ -73,6 +73,11 @@
   <script>
     // Initialize collapse button
     $(".button-collapse").sideNav();
+
+    // Pagination disabled buttons
+    $('.pagination').on('click', '.disabled a', function(e) {
+      e.preventDefault();
+    });
   </script>
 
 </body>

@@ -4,7 +4,7 @@ class ListController {
   public function indexAction() {
     $title = 'View List';
     $limit = 10;
-    $p = 1;
+    $p = 1; // Por default mostraremos la primera página
     $start = ($p-1) * $limit;
     $films = get_films_subset($start, $limit);
     $filmsCount = get_films_total();
@@ -19,7 +19,7 @@ class ListController {
   public function pageAction($params) {
     $title = 'View List';
     $limit = 10;
-    $p = ( isset($params) ? $params : 1 );
+    $p = ( isset($params) ? $params : 1 ); // Si traemos el parámetro de la página lo asignamos, en caso contrario sera 1
     $start = ($p-1) * $limit;
     $films = get_films_subset($start, $limit);
     $filmsCount = get_films_total();
