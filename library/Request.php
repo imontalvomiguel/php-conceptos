@@ -105,7 +105,8 @@ class Request {
 
     // Esto se hace con manejo de excepciones try/catch
     if (!file_exists($controllerFileName)) {
-      exit('controlador no existe');
+      $controllerClassName = 'errorController';
+      $controllerFileName = 'controllers/errorController.php';
     }
 
     // Require al FileName

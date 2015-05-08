@@ -6,28 +6,17 @@
       die();
     }
 
-    public function ciudadAction($film) {
-      echo("Films mostrar $film");
-      die();
+    public function printAction($film_id) {
+      // Título de la página
+      $title = 'Films';
+
+      // Obener un film por idividual
+      $film = get_film_single($film_id);
+
+      // Si el film existe mando la vista
+      $view = new View('films', compact('film', 'title'));
+      return $view;
     }
   }
 
-  //if (!empty($_GET['id'])) {
-    //$film_id = intval($_GET['id']);
 
-    //// Título de la página
-    //$title = 'Films';
-
-    //// Obener un film por idividual
-    //$film = get_film_single($film_id);
-
-    //if ($film) {
-      //// Si el film existe mando la vista
-      //view('films', compact('film', 'title'));
-    //} else {
-      //redirect('Location: ./404');
-    //}
-
-  //} else {
-    //redirect('Location: ./404');
-  //}

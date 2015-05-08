@@ -10,7 +10,7 @@
             <p><strong>Rate: </strong><?php echo $film['rating']; ?> <br>
               <strong>Rental Rate</strong>: <?php echo $film['rental_rate']; ?>
             </p>
-            <a href="index.php?url=films&id=<?php echo $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
+            <a href="<?php echo BASE_URL . '/films/print/' . $film['film_id']; ?>" class="secondary-content"><i class="mdi-action-grade"></i></a>
           </li>
           <?php endforeach; ?>
         </ul>
