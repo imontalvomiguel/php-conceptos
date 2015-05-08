@@ -29,13 +29,13 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="<?= BASE_URL; ?>/list"><i class="mdi-action-view-list"></i></a></li>
         <li><a href="<?= BASE_URL; ?>/search"><i class="mdi-action-search"></i></a></li>
-        <li><a href="mailto:me@montalvomiguel.net"><i class="mdi-communication-quick-contacts-mail"></i></a></li>
+        <li><a href="<?= BASE_URL; ?>/rest"><i class="mdi-navigation-more-vert"></i></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="<?= BASE_URL; ?>/list">View list</a></li>
         <li><a href="<?= BASE_URL; ?>/search">Search</a></li>
-        <li><a href="mailto:me@montalvomiguel.net">Contact</a></li>
+        <li><a href="<?= BASE_URL; ?>/rest">REST</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
@@ -55,7 +55,7 @@
           <ul>
             <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/list">View list</a></li>
             <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/search">Search</a></li>
-            <li><a class="grey-text text-lighten-3" href="mailto:me@montalvomiguel.net">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/rest">REST</a></li>
           </ul>
         </div>
       </div>

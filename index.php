@@ -17,6 +17,7 @@
   require 'library/Inflector.php';
   require 'library/Response.php';
   require 'library/View.php';
+  require 'library/ResponseJson.php';
 
   if (empty($_GET['url'])) {
     $url = '';

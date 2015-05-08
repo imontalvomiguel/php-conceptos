@@ -8,6 +8,7 @@ class View extends Response {
 
   // Propiedades de la clase View:
   protected $template;
+  protected $layout = 'layout';
   protected $vars = array();
 
   // Obligatorio $template y vars para crear una instancia de Vista.
@@ -24,6 +25,20 @@ class View extends Response {
     return $this->template;
   }
 
+  public function getTemplateFileName() {
+    $template = $this->getTemplate();
+    return "views/$template.tpl.php";
+  }
+
+  public function getLayout() {
+    return $this->layout;
+  }
+
+  public function getLayoutFile() {
+    $layout = $this->layout;
+    return "views/$layout.tpl.php";
+  }
+
   // Implementamos el método abstracto execute (obligatorio)
   public function execute() {
     $vars = $this->getVars();
@@ -34,13 +49,15 @@ class View extends Response {
       extract($vars);
       // Para toda la salida de texto enviada al cliente y almacenarlo en una variable.
       ob_start();
-      require "views/$template.tpl.php";
+      $templateFileName = $this->getTemplateFileName();
+      require $templateFileName;
 
       // Asignamos a una variable la salida del template
       $tpl_content = ob_get_clean();
 
       // Incluimos el layout común header,footer,sidebar,etc
-      require 'views/layout.tpl.php';
+      $layoutFile = $this->getLayoutFile();
+      require $layoutFile;
     });
   }
 
