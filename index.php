@@ -14,6 +14,7 @@
 
   // Library
   require 'library/Request.php';
+  require 'library/RequestUrl.php';
   require 'library/Inflector.php';
   require 'library/Response.php';
   require 'library/View.php';
@@ -25,5 +26,6 @@
     $url = $_GET['url'];
   }
 
-  $request = new Request($url);
+  $requestUrl = new RequestUrl($url);
+  $request = new Request($requestUrl);
   $request->execute();
