@@ -11,7 +11,10 @@
       $title = 'Films';
 
       // Obener un film por idividual
-      $film = get_film_single($film_id);
+      // Instanciando el modelo
+      $filmModel = new Film();
+      // Pidiendo la data al modelo
+      $film = $filmModel->getFilmSingle($film_id);
 
       // Si el film existe mando la vista
       $view = new View('films', compact('film', 'title'));

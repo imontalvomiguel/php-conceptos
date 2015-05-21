@@ -9,8 +9,9 @@
    */
 
   require_once('config.php'); // Settings de la aplicación
-  require_once('helpers.php'); // Helpers
-  require_once('models/database.php'); // PDO para conexión a la base de datos
+  require_once('library/Connection.php'); // PDO para conexión a la base de datos
+  require_once('models/BaseModel.php');
+  require_once('models/Film.php');
 
   // Library
   require 'library/Request.php';

@@ -7,7 +7,10 @@
 
     public function indexAction() {
       $title = 'Rental Rate';
-      $films = get_films_rated();
+      // Instancia del modelo
+      $filmModel = new Film();
+      // Pidiendo la data al modelo
+      $films = $filmModel->getFilmsRated();
 
       $vars = array(
         'films' => $films,
