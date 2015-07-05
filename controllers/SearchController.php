@@ -5,9 +5,9 @@ class SearchController {
     $title = 'Search';
     if (isset($_GET['s'])) {
       $s = $_GET['s'];
-      $filmModel = new Film();
+      $dbh = new Database();
 
-      $films = $filmModel->getFilmsSearch($s);
+      $films = $dbh->query("SELECT * FROM film WHERE title LIKE :term", [':term' => "%$s%"]);
     }
     $view = new View('search', compact('title', 'films', 's'));
     return $view;
