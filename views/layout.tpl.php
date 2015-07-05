@@ -53,7 +53,7 @@
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Quick links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/list">View list</a></li>
+            <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/films">View list</a></li>
             <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/search">Search</a></li>
             <li><a class="grey-text text-lighten-3" href="<?= BASE_URL; ?>/rest">REST</a></li>
           </ul>
