@@ -10,11 +10,15 @@ class RestController {
   }
 
   public function rentalRateAction() {
-    // Instancia del modelo
-    $filmModel = new Film();
-    // Pidiendo la data al modelo
-    $films = $filmModel->getFilmsRated();
-    $data = new ResponseJson($films);
+    $dbh = new Database();
+    $films = $dbh->query('SELECT * FROM film ORDER BY rental_rate DESC LIMIT 10');
+    $filmsArr = array();
+
+    // Todo refactor this
+    foreach ($films as $film) {
+      $filmsArr[] = $film;
+    }
+    $data = new ResponseJson($filmsArr);
     return $data;
   }
 
@@ -22,20 +26,22 @@ class RestController {
     $limit = 10;
     $p = ( isset($params) ? $params : 1 ); // Si traemos el parámetro de la página lo asignamos, en caso contrario sera 1
     $start = ($p-1) * $limit;
-    $filmModel = new Film();
-    $films = $filmModel->getFilmsSubset($start, $limit);
+    $dbh = new Database();
+    $films = $dbh->query('SELECT * FROM film LIMIT :start, :limit', [':start' => $start, ':limit' => $limit]);
 
-    $data = new ResponseJson($films);
+    // Todo refactor this
+    $filmsArr = array();
+    foreach ($films as $film) {
+      $filmsArr[] = $film;
+    }
+
+    $data = new ResponseJson($filmsArr);
     return $data;
   }
 
   public function filmAction($params) {
-    // Instanciando el modelo
-    $filmModel = new Film();
-    // Pidiendo la data al modelo
-    $film = $filmModel->getFilmSingle($params);
-
-    // Si el film existe mando la vista
+    $dbh = new Database();
+    $film = $dbh->find('film', 'film_id', $params);
     $data = new ResponseJson($film);
     return $data;
   }
