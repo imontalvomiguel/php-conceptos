@@ -7,10 +7,10 @@
 
     public function indexAction() {
       $title = 'Rental Rate';
-      // Instancia del modelo
-      $filmModel = new Film();
-      // Pidiendo la data al modelo
-      $films = $filmModel->getFilmsRated();
+      // Instancia de la conexión a la DB
+      $dbh = new Database();
+      // Custom query
+      $films = $dbh->query('SELECT * FROM film ORDER BY rental_rate DESC LIMIT 10');
 
       $vars = array(
         'films' => $films,
