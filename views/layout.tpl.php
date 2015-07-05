@@ -27,7 +27,7 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="<?= BASE_URL; ?>" class="brand-logo">Films</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="<?= BASE_URL; ?>/list"><i class="mdi-action-view-list"></i></a></li>
+        <li><a href="<?= BASE_URL; ?>/films"><i class="mdi-action-view-list"></i></a></li>
         <li><a href="<?= BASE_URL; ?>/search"><i class="mdi-action-search"></i></a></li>
         <li><a href="<?= BASE_URL; ?>/rest"><i class="mdi-navigation-more-vert"></i></a></li>
       </ul>
